@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y bg">
+
+{% include 'includes/alerts.html' %}
+<div class="container pt-5 pb-5">
+	<div class="row">
+	<aside class="col-md-3">
+		<!--   SIDEBAR   -->
+		<ul class="list-group">
+            {% if user.is_superadmin is True %}
+                <a class="list-group-item" href="#">Citas de Pacientes</a>
+            {% elif user.is_staff is True %}
+            	<a class="list-group-item" href="#">Citas de Pacientes</a>
+            	<a class="list-group-item" href="#">Asignar Citas</a>
+            	<a class="list-group-item" href="#">Abrir Citas</a>
+            	<a class="list-group-item" href="#">Facturacion</a>
+
+            {% elif user.is_admin is True %}
+            	<a class="list-group-item" href="#">Mis Citas</a>
+            	<a class="list-group-item" href="{% url 'dashboardUserAppointment' %}">Separar una Cita</a>
+            	<a class="list-group-item" href="#">Cancelar una Cita</a>
+            	<a class="list-group-item" href="#">Citas Anteriores</a>
+            	<a class="list-group-item" href="#">Ver Facturas</a>
+            {% endif %}
+
+			<a class="list-group-item active" href="{% url 'dashboard' %}">Perfil</a>
+
+		</ul>
+		<br>
+		<a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a>
+		<!--   SIDEBAR .//END   -->
+	</aside>
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Perfil</strong>
+		</header>
+		<div class="card-body">
+            <div id="wrapper" style="text-align: center">
+                <div class="tab-content" id="calendar_appointment">
+                    <header>
+                        <h2>Esto es perfil</h2>
+                    </header>
+                </div>
+            </div>
+
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+{% endblock %}

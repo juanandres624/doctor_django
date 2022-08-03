@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y bg">
+
+{% include 'includes/alerts.html' %}
+<div class="container pt-5 pb-5">
+	<div class="row">
+	<aside class="col-md-3">
+		<!--   SIDEBAR   -->
+		<ul class="list-group">
+            {% if user.is_superadmin is True %}
+                <a class="list-group-item" href="#">Citas de Pacientes</a>
+            {% elif user.is_staff is True %}
+            	<a class="list-group-item" href="#">Citas de Pacientes</a>
+            	<a class="list-group-item" href="#">Asignar Citas</a>
+            	<a class="list-group-item" href="#">Abrir Citas</a>
+            	<a class="list-group-item" href="#">Facturacion</a>
+
+            {% elif user.is_admin is True %}
+            	<a class="list-group-item" href="#">Mis Citas</a>
+            	<a class="list-group-item active" href="{% url 'dashboardUserAppointment' %}">Separar una Cita</a>
+            	<a class="list-group-item" href="#">Cancelar una Cita</a>
+            	<a class="list-group-item" href="#">Citas Anteriores</a>
+            	<a class="list-group-item" href="#">Ver Facturas</a>
+            {% endif %}
+
+			<a class="list-group-item" href="{% url 'dashboard' %}">Perfil</a>
+
+		</ul>
+		<br>
+		<a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a>
+		<!--   SIDEBAR .//END   -->
+	</aside>
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+{#			<strong class="d-inline-block mr-3">Order ID: 6123456789</strong>#}
+{#			<span>Order Date: 16 December 2018</span>#}
+        <div class="row">
+            <div class="item-option-select">
+                <h6>Seleccionar Mes</h6>
+                <select name = "month" class="form-control">
+                    <option value="" disabled selected></option>
+                    {% for i in calendar_active %}
+                        <option value="{{ i.id }}">{{ i.calendar_month | capfirst }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div> <!-- row.// -->
+        </header>
+		<div class="card-body">
+            <div id="wrapper" style="text-align: center">
+                <div class="tab-content" id="calendar_appointment">
+                    <header>
+                        <h2>{{ act_month }}</h2>
+                    </header>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <td>Lunes</td>
+                                <td>Martes</td>
+                                <td>Miercoles</td>
+                                <td>Jueves</td>
+                                <td>Viernes</td>
+                                <td>Sabado</td>
+                                <td>Domingo</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><input type="button" value="1" onclick=""></td>
+                                <td><input type="button" value="2" onclick=""></td>
+                                <td><input type="button" value="3" onclick=""></td>
+                                <td><input type="button" value="4" onclick=""></td>
+                                <td><input type="button" value="5" onclick=""></td>
+                            </tr>
+                            <tr>
+                                <td><input type="button" value="6" onclick=""></td>
+                                <td><input type="button" value="7" onclick=""></td>
+                                <td><input type="button" value="8" onclick=""></td>
+                                <td><input type="button" value="9" onclick=""></td>
+                                <td><input type="button" value="10" onclick=""></td>
+                                <td><input type="button" value="11" onclick=""></td>
+                                <td><input type="button" value="12" onclick=""></td>
+                            </tr>
+                            <tr>
+                                <td><input type="button" value="13" onclick=""></td>
+                                <td><input type="button" value="14" onclick=""></td>
+                                <td><input type="button" value="15" onclick=""></td>
+                                <td><input type="button" value="16" onclick=""></td>
+                                <td><input type="button" value="17" onclick=""></td>
+                                <td><input type="button" value="18" onclick=""></td>
+                                <td><input type="button" value="19" onclick=""></td>
+                            </tr>
+                            <tr>
+                                <td><input type="button"  value="20" onclick=""></td>
+                                <td><input type="button"  value="21" onclick=""></td>
+                                <td><input type="button"  value="22" onclick=""></td>
+                                <td><input type="button"  value="23" onclick=""></td>
+                                <td><input type="button"  value="24" onclick=""></td>
+                                <td><input type="button"  value="25" onclick=""></td>
+                                <td><input type="button"  value="26" onclick=""></td>
+                            </tr>
+                            <tr>
+                                <td><input type="button" value="27" onclick=""></td>
+                                <td><input type="button" value="28" onclick=""></td>
+                                <td><input type="button" value="29" onclick=""></td>
+                                <td><input type="button" value="30" onclick=""></td>
+                                <td><input type="button" value="31" onclick=""></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+		            </div> <!-- table-responsive .end// -->
+                </div>
+            </div>
+
+		</div> <!-- card-body .// -->
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+{% endblock %}

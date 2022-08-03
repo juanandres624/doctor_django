@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section-content padding-y" style="min-height:84vh">
+
+<!-- ============================ COMPONENT LOGIN   ================================= -->
+
+    {% if request.GET.command == 'verification' %}
+       	<div class="container mc-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+            Gracias por registrarte con nosotros. Te enviamos un correo de verificación a tu correo electronico! [{{ request.GET.email }}]
+        <br><br>
+        Ya iniciaste Sesión? <a href="{% url 'login' %}">Login</a>
+        </div>
+    {% else %}
+	<div class="card mx-auto" style="max-width: 600px; margin-top:100px;">
+      <div class="card-body">
+      <h4 class="card-title mb-4">Iniciar Sesion </h4>
+          {% include 'includes/alerts.html' %}
+      <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+			 <input type="email" class="form-control" placeholder="Email Address" name="email" >
+          </div> <!-- form-group// -->
+          <div class="form-group">
+			<input type="password" class="form-control" placeholder="Password" name="password">
+          </div> <!-- form-group// -->
+
+          <div class="form-group">
+          	<a href="{% url 'forgotPassword' %}" class="float-right">Olvidaste la Contraseña?</a>
+
+          </div> <!-- form-group form-check .// -->
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Ingresar  </button>
+          </div> <!-- form-group// -->
+      </form>
+      </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+
+     <p class="text-center mt-4">No tienes una cuenta? <a href="{% url 'register' %}">Registrate</a></p>
+     <br><br>
+<!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+     {% endif %}
+
+
+</section>
+
+
+{% endblock %}

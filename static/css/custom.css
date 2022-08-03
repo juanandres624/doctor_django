@@ -1,0 +1,58 @@
+.primary_tc {
+  color: #0cb8b6;
+}
+.primary_tc_bgr{
+  background-color: #0cb8b6;
+}
+
+hr.solid {
+  border-top: 3px solid #0cb8b6;
+  width:100px;
+}
+
+.gallery_tiny{
+  height: 120px;
+  width: 200px;
+}
+
+.gallery_tiny img{
+  object-fit: cover;
+}
+
+#calendar_appointment{
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 300px;
+  margin: 0 auto;
+  display: inline;
+  vertical-align: top;
+}
+
+#calendar_appointment header{
+  position: relative;
+}
+
+.btn_cal{
+  position: absolute;
+}
+
+.btn_cal:first-child{
+  left: 0;
+}
+
+.btn_cal:last-child{
+  right: 0;
+}
+
+.tbl_cal{
+  background: #fff;
+  border-collapse: collapse;
+  color: #222;
+  font-size: 13px;
+  width: 100%;
+}
+
+td{
+  color: green;
+}
