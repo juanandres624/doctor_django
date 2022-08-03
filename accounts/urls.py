@@ -8,6 +8,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     # path('', views.dashboard, name='dashboard'),
     path('dashboard/appointment', views.dashboardUserAppointment, name='dashboardUserAppointment'),
+    path('dashboard/Openappointment', views.dashboardOpenAppointment, name='dashboardOpenAppointment'),
 
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('forgotPassword/', views.forgotPassword, name='forgotPassword'),

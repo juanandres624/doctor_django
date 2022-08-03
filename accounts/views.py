@@ -216,3 +216,20 @@ def resetPassword(request):
             return redirect('resetPassword')
     else:
         return render(request, 'accounts/reset_password.html')
+
+
+@login_required(login_url='login')
+def dashboardOpenAppointment(request, actual_calendar_month=None):
+
+    try:
+
+        actual_calendar_month = months_dict
+        actual_year = int(datetime.now().year)
+
+    except ObjectDoesNotExist:
+        pass
+
+    context = {
+        'act_calendar_months': actual_calendar_month,
+    }
+    return render(request, 'accounts/dashboard_open_appointment.html', context)

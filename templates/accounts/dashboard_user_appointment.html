@@ -13,10 +13,13 @@
 		<ul class="list-group">
             {% if user.is_superadmin is True %}
                 <a class="list-group-item" href="#">Citas de Pacientes</a>
+                <a class="list-group-item" href="#">Asignar Citas</a>
+            	<a class="list-group-item" href="{% url 'openAppointmentDash' %}">Abrir Citas</a>
+            	<a class="list-group-item" href="#">Facturacion</a>
             {% elif user.is_staff is True %}
             	<a class="list-group-item" href="#">Citas de Pacientes</a>
             	<a class="list-group-item" href="#">Asignar Citas</a>
-            	<a class="list-group-item" href="#">Abrir Citas</a>
+            	<a class="list-group-item" href="{% url 'openAppointmentDash' %}">Abrir Citas</a>
             	<a class="list-group-item" href="#">Facturacion</a>
 
             {% elif user.is_admin is True %}

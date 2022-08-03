@@ -14,12 +14,12 @@
             {% if user.is_superadmin is True %}
                 <a class="list-group-item" href="#">Citas de Pacientes</a>
             	<a class="list-group-item" href="#">Asignar Citas</a>
-            	<a class="list-group-item" href="{% url 'dashboardOpenAppointment' %}">Abrir Citas</a>
+            	<a class="list-group-item active" href="#">Abrir Citas</a>
             	<a class="list-group-item" href="#">Facturacion</a>
             {% elif user.is_staff is True %}
             	<a class="list-group-item" href="#">Citas de Pacientes</a>
             	<a class="list-group-item" href="#">Asignar Citas</a>
-            	<a class="list-group-item" href="{% url 'dashboardOpenAppointment' %}">Abrir Citas</a>
+            	<a class="list-group-item active" href="#">Abrir Citas</a>
             	<a class="list-group-item" href="#">Facturacion</a>
 
             {% elif user.is_admin is True %}
@@ -30,7 +30,7 @@
             	<a class="list-group-item" href="#">Ver Facturas</a>
             {% endif %}
 
-			<a class="list-group-item active" href="{% url 'dashboard' %}">Perfil</a>
+			<a class="list-group-item" href="{% url 'dashboard' %}">Perfil</a>
 
 		</ul>
 		<br>
@@ -40,13 +40,21 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">Perfil</strong>
+			<strong class="d-inline-block mr-3">Abrir Citas</strong>
 		</header>
 		<div class="card-body">
             <div id="wrapper" style="text-align: center">
                 <div class="tab-content" id="calendar_appointment">
                     <header>
-                        <h2>Esto es perfil</h2>
+                        <div class="item-option-select">
+                            <h6>Seleccionar Mes</h6>
+                            <select name = "month" class="form-control">
+                                <option value="" disabled selected></option>
+                                {% for key, values in act_calendar_months.items %}
+                                <option value="{{ key }}">{{ values | capfirst }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </header>
                 </div>
             </div>
